@@ -1,0 +1,16 @@
+﻿{
+	"description": "A Raven module which provides integration with ASP.NET vNext through the Auditor framework.",
+	"authors": [ "Benjamin Pannell" ],
+	"version": "1.0.0-*",
+	"dependencies": {
+		"SharpRaven": "1.4.4.0",
+		"Auditor": "1.0.0-*"
+	},
+
+	"frameworks": {
+		"aspnet50": {
+			"dependencies": {
+			}
+		}
+	}
+}
