@@ -13,6 +13,7 @@ using SharpRaven.Logging;
 using System.Text;
 using Auditor.Features;
 using SharpRaven.Features;
+using Microsoft.AspNet.Hosting;
 
 namespace SharpRaven.Factories
 {
@@ -26,7 +27,7 @@ namespace SharpRaven.Factories
 
         protected override SentryUser OnCreate(SentryUser user)
         {
-            var requestContext = Services.GetRequiredService<IContextAccessor<HttpContext>>();
+            var requestContext = Services.GetRequiredService<IHttpContextAccessor>();
 
             if (requestContext.Value == null) return null;
             var context = requestContext.Value;
