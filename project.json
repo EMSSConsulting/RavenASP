@@ -3,7 +3,7 @@
 	"authors": [ "Benjamin Pannell" ],
 	"version": "1.0.0-*",
 	"dependencies": {
-		"SharpRaven": "1.4.4.0",
+		"SharpRaven": "1.4.5.0",
 		"Auditor": "1.0.0-*"
 	},
 
