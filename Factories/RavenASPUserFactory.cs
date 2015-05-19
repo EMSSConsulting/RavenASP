@@ -29,8 +29,8 @@ namespace SharpRaven.Factories
         {
             var requestContext = Services.GetRequiredService<IHttpContextAccessor>();
 
-            if (requestContext.Value == null) return null;
-            var context = requestContext.Value;
+            if (requestContext.HttpContext == null) return null;
+            var context = requestContext.HttpContext;
 
             user.Username = context.User.Identity.Name;
 
