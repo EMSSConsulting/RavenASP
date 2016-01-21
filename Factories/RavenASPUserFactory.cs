@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
-using Microsoft.Framework.DependencyInjection;
 using SharpRaven;
 using SharpRaven.Data;
 using System;
@@ -14,6 +13,7 @@ using System.Text;
 using Auditor.Features;
 using SharpRaven.Features;
 using Microsoft.AspNet.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace SharpRaven.Factories
 {

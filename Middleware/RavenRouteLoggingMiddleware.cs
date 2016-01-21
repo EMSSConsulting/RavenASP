@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Auditor.Features;
 using Auditor.Middleware;
 using SharpRaven.Features;
+using Microsoft.AspNet.Http.Features;
 
 namespace AntennaPortal.Middleware
 {   
@@ -19,7 +20,7 @@ namespace AntennaPortal.Middleware
 
         protected override async Task LogRoute(HttpContext context, IRouteInformationFeature routeInformation)
         {
-            var reporter = context.GetFeature<IRavenReportingFeature>();
+            var reporter = context.Features.Get<IRavenReportingFeature>();
             if (reporter == null) return;
             
             var level = ErrorLevel.Info;
@@ -51,7 +52,7 @@ namespace AntennaPortal.Middleware
 
         protected override async Task LogNotFound(HttpContext context, IRouteInformationFeature routeInformation, IRouteNotFoundFeature notFound)
         {
-            var reporter = context.GetFeature<IRavenReportingFeature>();
+            var reporter = context.Features.Get<IRavenReportingFeature>();
             if (reporter == null) return;
 
             var level = ErrorLevel.Warning;

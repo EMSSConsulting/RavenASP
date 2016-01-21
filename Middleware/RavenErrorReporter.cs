@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Auditor.Middleware;
 using SharpRaven.Features;
+using Microsoft.AspNet.Http.Features;
 
 namespace AntennaPortal.Middleware
 {
@@ -16,7 +17,7 @@ namespace AntennaPortal.Middleware
 
         protected override async Task ReportException(HttpContext context, Exception ex)
         {
-            var errorReporter = context.GetFeature<IRavenReportingFeature>();
+            var errorReporter = context.Features.Get<IRavenReportingFeature>();
             await (errorReporter?.Raven?.CaptureExceptionAsync(ex) ?? Task.FromResult(""));
         }
     }

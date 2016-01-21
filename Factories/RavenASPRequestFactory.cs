@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
-using Microsoft.Framework.DependencyInjection;
 using SharpRaven;
 using SharpRaven.Data;
 using System;
@@ -12,8 +11,9 @@ using System.IO;
 using SharpRaven.Logging;
 using System.Text;
 using Auditor.Features;
-using SharpRaven.Features;
 using Microsoft.AspNet.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNet.Http.Features;
 
 namespace SharpRaven.Factories
 {
@@ -32,7 +32,7 @@ namespace SharpRaven.Factories
 
             if (requestContext.HttpContext == null) return null;
             var context = requestContext.HttpContext;
-            var routeFeature = context.GetFeature<IRouteInformationFeature>();
+            var routeFeature = context.Features.Get<IRouteInformationFeature>();
 
             request.Cookies = context.Request.Cookies.ToDictionary(c => c.Key, c => c.Value.Aggregate((x, y) => x + ", " + y));
             request.Headers = context.Request.Headers.ToDictionary(h => h.Key, h => h.Value.Aggregate((x, y) => x + ", " + y));

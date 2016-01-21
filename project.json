@@ -3,8 +3,9 @@
 	"authors": [ "Benjamin Pannell" ],
 	"version": "1.0.0-*",
 	"dependencies": {
-		"SharpRaven": "1.4.5.0",
-		"Auditor": "1.0.0-*"
+		"SharpRaven": "1.5.1-unstable0191",
+		"Auditor": "1.0.0-*",
+		"Microsoft.AspNet.Http.Features": "1.0.0-rc1-final"
 	},
 
 	"frameworks": {
