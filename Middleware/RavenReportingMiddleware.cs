@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Http;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using SharpRaven.Features;
 
@@ -19,7 +19,7 @@ namespace SharpRaven.Middleware
         public async Task Invoke(HttpContext context)
         {
             // Set the default error reporting feature
-            context.SetFeature<IRavenReportingFeature>(new RavenReportingFeature() { Enabled = _enabled, Services = context.RequestServices });
+            context.Features.Set<IRavenReportingFeature>(new RavenReportingFeature() { Enabled = _enabled, Services = context.RequestServices });
             await _next(context);
         }
     }

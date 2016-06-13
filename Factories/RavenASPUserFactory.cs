@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Http;
-using Microsoft.AspNet.Mvc;
-using Microsoft.Framework.DependencyInjection;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using SharpRaven;
 using SharpRaven.Data;
 using System;
@@ -13,7 +13,7 @@ using SharpRaven.Logging;
 using System.Text;
 using Auditor.Features;
 using SharpRaven.Features;
-using Microsoft.AspNet.Hosting;
+using Microsoft.AspNetCore.Hosting;
 
 namespace SharpRaven.Factories
 {
@@ -29,8 +29,8 @@ namespace SharpRaven.Factories
         {
             var requestContext = Services.GetRequiredService<IHttpContextAccessor>();
 
-            if (requestContext.Value == null) return null;
-            var context = requestContext.Value;
+            if (requestContext.HttpContext == null) return null;
+            var context = requestContext.HttpContext;
 
             user.Username = context.User.Identity.Name;
 
